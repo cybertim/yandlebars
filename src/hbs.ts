@@ -12,7 +12,6 @@ interface HandlebarsConfig {
     baseDir: string;
     partialDir: string;
     extension: string;
-    defaultLayout: string;
     useCache: boolean;
 }
 
@@ -26,7 +25,6 @@ export class Yandlebars {
     private config: HandlebarsConfig = {
         baseDir: "views",
         partialDir: "partials",
-        defaultLayout: "main",
         extension: ".hbs",
         useCache: true
     }

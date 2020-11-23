@@ -10,7 +10,6 @@ A Deno library to use https://handlebarsjs.com/ in Deno.
 const yandlebars = new Yandlebars({
     baseDir: "views",
     partialDir: "partials",
-    defaultLayout: "main",
     extension: ".hbs",
     useCache: true
 });
