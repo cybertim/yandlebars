@@ -6,6 +6,7 @@ type Template = (c: Record<string, unknown>) => string;
 interface Handlebars {
     compile: (i: string) => Template;
     registerPartial: (n: string, t: string) => void;
+    registerHelper: (n: string, f: (value: string) => string) => void;
 }
 
 interface HandlebarsConfig {
@@ -68,6 +69,15 @@ export class Yandlebars {
      */
     registerPartial(name: string, template: string) {
         (<Handlebars>HandlebarsJS).registerPartial(name, template);
+    }
+
+    /**
+     * register a basic helper with name as template element
+     * @param name 
+     * @param func 
+     */
+    registerBasicHelper(name: string, func: (value: string) => string) {
+        (<Handlebars>HandlebarsJS).registerHelper(name, func);
     }
 
 }
