@@ -73,6 +73,11 @@ export class Yandlebars {
 
     /**
      * register a basic helper with name as template element
+     * ```ts
+     * yandlebars.registerBasicHelper("hello", (value: string) => {
+     *     return "hello " + value;
+     * });
+     * ```
      * @param name 
      * @param func 
      */
