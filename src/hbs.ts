@@ -35,7 +35,7 @@ export class Yandlebars {
         for (const entry of Deno.readDirSync(join(this.config.baseDir, this.config.partialDir))) {
             if (entry.isFile && entry.name.endsWith(this.config.extension)) {
                 const path = join(this.config.baseDir, this.config.partialDir, entry.name);
-                const source = new TextDecoder().decode(Deno.readFileSync(path));
+                const source = new TextDecoder("utf-8").decode(Deno.readFileSync(path));
                 this.registerPartial(entry.name.replace(this.config.extension, ''), source);
             }
         }
@@ -54,7 +54,7 @@ export class Yandlebars {
         let template = this.compileCache.get(view);
         if (template === undefined) {
             const path = join(this.config.baseDir, view + this.config.extension);
-            const source = new TextDecoder().decode(await Deno.readFile(path));
+            const source = new TextDecoder("utf-8").decode(await Deno.readFile(path));
             template = (<Handlebars>HandlebarsJS).compile(source);
             if (this.config.useCache)
                 this.compileCache.set(view, template);
